@@ -1,0 +1,114 @@
+import java.util.Scanner;
+
+class Human
+{
+    private String name;
+    private int age;
+    private String gender;
+
+    public Human(String name, int age, String gender) 
+    {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+    public int getAge() 
+    {
+        return age;
+    }
+    public String getinfo()
+    {
+        return name;
+    }
+}
+
+class Student extends Human
+{
+    private int rollNo;
+    private String studentClass;
+    private int semester;
+    private double cpi;
+
+    public Student(String name, int age, String gender, int rollNo, String studentClass, int semester, double cpi) 
+    {
+        super(name, age, gender);
+        this.rollNo = rollNo;
+        this.studentClass = studentClass;
+        this.semester = semester;
+        this.cpi = cpi;
+    }
+
+    @Override
+    public String getinfo() 
+    {
+        return "Student Info:\n" + "Name: " + super.getinfo() + "\nRoll No: " + rollNo + "\nClass: " + studentClass + "\nSemester: " + semester + "\nCPI: " + cpi + "\nAge: "+ getAge();
+    }
+}
+
+class Faculty extends Human 
+{
+    private int employeeId;
+    private double salary;
+    private String specialization;
+
+    public Faculty(String name, int age, String gender, int employeeId, double salary, String specialization) 
+    {
+        super(name, age, gender);
+        this.employeeId = employeeId;
+        this.salary = salary;
+        this.specialization = specialization;
+    }
+
+    @Override
+    public String getinfo() 
+    {
+        return "\nFaculty Info:\n" + "Name: " + super.getinfo() + "\nEmployee ID: " + employeeId + "\nSalary: " + salary + "\nSpecialization: " + specialization + "\nAge: "+ getAge();
+    }
+}
+
+public class Main 
+{
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        Student s = new Student("XYZ", 19, "Male",00, "IT", 3, 9.2);
+        Faculty f = new Faculty("MSS", 45, "Male",15, 200000, "DSA");
+
+        System.out.println(s.getinfo());
+        System.out.println(f.getinfo());
+        System.out.println();
+        
+         
+		System.out.println("UPDATE DETAILS: ");
+		
+		System.out.print("Enter student's name: ");
+        String studentName = scanner.nextLine();
+        
+        System.out.print("Enter student's age: ");
+        int studentAge = scanner.nextInt();
+        scanner.nextLine();
+        
+        System.out.print("Enter student's gender: ");
+        String studentGender = scanner.nextLine();
+        
+        System.out.print("Enter student's roll number: ");
+        int studentRollNo = scanner.nextInt();
+        scanner.nextLine();
+        
+        System.out.print("Enter student's class: ");
+        String studentClass = scanner.nextLine();
+        
+        System.out.print("Enter student's semester: ");
+        int studentSemester = scanner.nextInt();
+        
+        System.out.print("Enter student's CPI: ");
+        double studentCpi = scanner.nextDouble();
+
+        System.out.println("\nUPDATED DETAILS: ");
+        Student student = new Student(studentName, studentAge, studentGender,studentRollNo, studentClass, studentSemester, studentCpi);
+        System.out.println(student.getinfo());
+
+        scanner.close();
+    }
+}
